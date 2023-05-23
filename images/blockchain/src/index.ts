@@ -2,7 +2,7 @@
 import { format } from  "util";
 
 function log(message: unknown, tag = "Info", file: NodeJS.WriteStream = process.stdout, newline = false): void {
-	file.write(format("%s[%s] %s\n", newline ? "\n" : "", tag, message));
+	file.write(format("%s[%s] %s", newline ? "\n" : "", tag, message));
 	console.log()
 }
 
