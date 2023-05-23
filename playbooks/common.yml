@@ -1,0 +1,16 @@
+---
+- name: "Common provisioning"
+  hosts: all
+  become: true    # Execute as root.
+
+  tasks:
+    - name: "Updating packet cache"
+      ansible.builtin.apt:
+        # apt update
+        update_cache: true
+
+    - name: "Ensure traceroute is installed"
+      ansible.builtin.apt:
+        # apt install
+        name: "traceroute"
+        state: present
