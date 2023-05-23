@@ -1,4 +1,4 @@
 #!/bin/bash
-source ../garr-config.sh
+source $(dirname $(readlink -f $0))/../config.sh
 
 sftp -i $SECRET_KEY -P $SERVER_1_LOCAL_PORT $USER@127.0.0.1
