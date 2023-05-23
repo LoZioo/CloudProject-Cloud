@@ -142,3 +142,11 @@
         name: ubuntu
         groups: docker
         append: true
+
+    - name: "Cloning the CloudProject-Cloud GitHub repository"
+      # noqa: latest
+      become_user: ubuntu
+
+      ansible.builtin.git:
+        repo: https://github.com/LoZioo/CloudProject-Cloud.git
+        dest: ~/CloudProject-Cloud
