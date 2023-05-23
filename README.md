@@ -16,6 +16,14 @@ Cloud project Cloud section repository.
 6. Run every Ansible playbook under [playbooks](playbooks) by running `playbook-run-all.sh`.
 7. To build the Docker images, refer to the [CloudProject-Edge](https://github.com/LoZioo/CloudProject-Edge) repository.
 
+## Manually compile and test the Typescript code
+1. `cd` into the images folder and then in the interested image folder: you will find the Typescript source code under the `src` folder.
+2. Install the project requirements running `npm -i`; the project is developed under node version `lts-hydrogen` (v18.16.0), so you have to install node first.
+3. If you want a better VS Code experience, install the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
+4. Run `npm run lint` to manually call ESLint.
+5. Run `npm run build` to compile the TS code in JS code; you will find the build under the `build` folder.
+6. Run `npm run run` to build and run the code.
+
 ## Repo structure
 - [scripts](scripts): remote connection and tunneling ssh and sftp bash scripts.
 - [playbooks](playbooks): Ansible provision playbooks.
