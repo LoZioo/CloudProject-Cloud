@@ -1,0 +1,4 @@
+#!/bin/bash
+source ../garr-config.sh
+
+sftp -i $SECRET_KEY -P $SERVER_2_LOCAL_PORT $USER@127.0.0.1

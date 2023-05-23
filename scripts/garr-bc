@@ -1,0 +1,6 @@
+#!/bin/bash
+source ../garr-config.sh
+
+ssh \
+-i $SECRET_KEY \
+$USER@$SERVER_BC_ADDRESS

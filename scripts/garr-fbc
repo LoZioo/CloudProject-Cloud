@@ -1,0 +1,4 @@
+#!/bin/bash
+source ../garr-config.sh
+
+sftp -i $SECRET_KEY $USER@$SERVER_BC_ADDRESS

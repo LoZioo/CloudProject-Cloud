@@ -1,0 +1,4 @@
+#!/bin/bash
+source ../garr-config.sh
+
+ssh -i $SECRET_KEY $USER@127.0.0.1 -p $SERVER_1_LOCAL_PORT
