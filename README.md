@@ -12,7 +12,8 @@ Cloud project Cloud section repository.
 	```
 3. Edit `config.sh` and configure it to match your infrastructure.
 4. Generate your Ansible's `hosts.ini` by running `compile-ansible-hosts.sh`.
-5. Run every Ansible playbook under [playbooks](playbooks) by running `provision.sh`.
+5. Open a new shell and run the command `garr-0` to create the needed ssh tunnel (just leave the shell in the background).
+6. Run every Ansible playbook under [playbooks](playbooks) by running `provision.sh`.
 
 ## Repo structure
 - [scripts](scripts): remote connection and tunneling ssh and sftp bash scripts.
