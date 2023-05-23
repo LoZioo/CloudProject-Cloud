@@ -143,10 +143,8 @@
         groups: docker
         append: true
 
-    - name: "Cloning the CloudProject-Cloud GitHub repository"
-      # noqa: latest
-      become_user: ubuntu
-
-      ansible.builtin.git:
-        repo: https://github.com/LoZioo/CloudProject-Cloud.git
-        dest: ~/CloudProject-Cloud
+    # Copy the main repository folder.
+    - name: "Copying the repository directory"
+      ansible.posix.synchronize:
+        src: "../../../CloudProject-Cloud"
+        dest: ""
