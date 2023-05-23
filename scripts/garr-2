@@ -1,4 +1,4 @@
 #!/bin/bash
 source $(dirname $(readlink -f $0))/../config.sh
 
-ssh -i $SECRET_KEY $USER@127.0.0.1 -p $SERVER_2_LOCAL_PORT
+ssh -i $SECRET_KEY $USER@$SERVER_2_LOCAL_ADDRESS -p 2222
