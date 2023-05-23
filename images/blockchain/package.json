@@ -20,12 +20,12 @@
   },
   "homepage": "https://github.com/LoZioo/CloudProject-Cloud#readme",
   "dependencies": {
+		"typescript": "^4.9.4"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
-    "eslint": "^8.32.0",
-    "typescript": "^4.9.4"
+    "eslint": "^8.32.0"
   }
 }
