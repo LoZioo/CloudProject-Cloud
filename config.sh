@@ -18,3 +18,7 @@ export SERVER_2_REMOTE_ADDRESS="192.168.0.221"
 
 # SSH proxy.
 export SERVER_BC_ADDRESS="90.147.185.8"
+
+# Docker settings.
+export BUILD_PLATFORMS="linux/amd64"
+export DOCKERHUB_USER="lozioo"

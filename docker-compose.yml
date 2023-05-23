@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  outlier-detector:
+    image: lozioo/blockchain:latest
+    restart: always
+
+    # Needed for printing logs.
+    stdin_open: true  # docker run -i
+    tty: true         # docker run -t
+
+    ports:
+      - 5080
