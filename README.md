@@ -14,6 +14,7 @@ Cloud project Cloud section repository.
 4. Generate your Ansible's `hosts.ini` by running `compile-ansible-hosts.sh`.
 5. Open a new shell and run the command `garr-0` to create the needed ssh tunnel (just leave the shell in the background).
 6. Run every Ansible playbook under [playbooks](playbooks) by running `playbook-run-all.sh`.
+7. To build the Docker images, refer to the [CloudProject-Edge](https://github.com/LoZioo/CloudProject-Edge) repository.
 
 ## Repo structure
 - [scripts](scripts): remote connection and tunneling ssh and sftp bash scripts.
