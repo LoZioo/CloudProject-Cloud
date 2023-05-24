@@ -27,6 +27,8 @@ Cloud project Cloud section repository.
 ## Repo structure
 - [scripts](scripts): remote connection and tunneling ssh and sftp bash scripts.
 - [playbooks](playbooks): Ansible provision playbooks.
+- [images](images): Docker images and the corresponding source code.
+- [data](data): here you will find application specific runtime files (ex.: the `hash.db.json` file from the blockchain application).
 - [add-scripts-to-path.sh](add-scripts-to-path.sh): add every script under [scripts](scripts) to `$PATH`.
 - [config.sh](config.sh): configure it to match your infrastructure.
 - [compile-ansible-hosts.sh](compile-ansible-hosts.sh): generate the `hosts.ini` file.
