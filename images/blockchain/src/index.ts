@@ -10,6 +10,12 @@ interface CloudBlock_t {
 	hash:				string,
 }
 
+// Blockchain block.
+interface BlockchainBlock_t {
+	timestamp:	string,
+	hash:				string,
+}
+
 /**
  * Check if obj is a CloudBlock_t object (check keys only, not values).
  * @param obj
@@ -35,7 +41,7 @@ import { access, readFile, writeFile } from "fs/promises";
 /**
  * Save the specified block to the specified json file (only the timestamp and the hash).
  */
-async function saveToFile(block: CloudBlock_t, file: string): Promise<void> {
+async function saveToFile(block: BlockchainBlock_t, file: string): Promise<void> {
 	// Open existing file.
 	try {
 		await access(file, fs.constants.F_OK);
@@ -47,12 +53,8 @@ async function saveToFile(block: CloudBlock_t, file: string): Promise<void> {
 	}
 
 	finally {
-		const content: Array<unknown> = JSON.parse(await readFile(file, "utf-8"));
-		content.push({
-			timestamp:	block.timestamp,
-			hash:				block.hash
-		});
-
+		const content: Array<BlockchainBlock_t> = JSON.parse(await readFile(file, "utf-8"));
+		content.push(block);
 		await writeFile(file, JSON.stringify(content, null, 2), "utf-8");
 	}
 }
@@ -60,7 +62,7 @@ async function saveToFile(block: CloudBlock_t, file: string): Promise<void> {
 /**
  * Load from the specified json file, the saved blocks.
  */
-async function loadFromFile(file: string): Promise<Array<unknown>> {
+async function loadFromFile(file: string): Promise<Array<BlockchainBlock_t>> {
 	// Open existing file.
 	try {
 		await access(file, fs.constants.F_OK);
@@ -142,10 +144,10 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.post("/block/add", async (req: Request, res: Response) => {
-	const block: CloudBlock_t = req.body;
+	const content: CloudBlock_t = req.body;
 
 	try {
-		assert(is_CloudBlock_t(block));
+		assert(is_CloudBlock_t(content));
 	}
 
 	catch(e){
@@ -154,6 +156,10 @@ app.post("/block/add", async (req: Request, res: Response) => {
 	}
 
 	log(format("Received block from %s:%d.", req.ip, req.socket.remotePort));
+	const block: BlockchainBlock_t = {
+		timestamp:	content.timestamp,
+		hash:				content.hash
+	};
 
 	log("Saving the received block.");
 	await saveToFile(block, DB_FILE);
