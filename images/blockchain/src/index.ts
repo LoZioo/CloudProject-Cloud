@@ -57,6 +57,22 @@ async function saveToFile(block: CloudBlock_t, file: string): Promise<void> {
 	}
 }
 
+/**
+ * Load from the specified json file, the saved blocks.
+ */
+async function loadFromFile(file: string): Promise<Array<unknown>> {
+	// Open existing file.
+	try {
+		await access(file, fs.constants.F_OK);
+		return JSON.parse(await readFile(file, "utf-8"));
+	}
+
+	// File doesn't exist.
+	catch (e){
+		return [];
+	}
+}
+
 // App log.
 import { format } from  "util";
 import { stdout, stderr } from "process";
@@ -102,11 +118,20 @@ app.get("/", (req: Request, res: Response) => {
 		service: "add-block",
 		endpoints: [
 			{
-				endpoint:			"/add",
+				endpoint:			"/block/add",
 				method:				"post",
 				body:					"application/json",
 				bodyType:			"CloudBlock_t",
+				returns:			null,
 				description:	"Add the hash and the timestamp of a CloudBlock_t object to the blockchain."
+			},
+			{
+				endpoint:			"/block/get",
+				method:				"post",
+				body:					null,
+				bodyType:			null,
+				returns:			"Array<unknown>",
+				description:	"Returns every saved block."
 			}
 		]
 	};
@@ -116,7 +141,7 @@ app.get("/", (req: Request, res: Response) => {
 	res.send(JSON.stringify(endpoints));
 });
 
-app.post("/add-block", async (req: Request, res: Response) => {
+app.post("/block/add", async (req: Request, res: Response) => {
 	const block: CloudBlock_t = req.body;
 
 	try {
@@ -134,6 +159,23 @@ app.post("/add-block", async (req: Request, res: Response) => {
 	await saveToFile(block, DB_FILE);
 
 	res.sendStatus(200);
+});
+
+app.post("/block/get", async (req: Request, res: Response) => {
+	const block: CloudBlock_t = req.body;
+
+	try {
+		assert(is_CloudBlock_t(block));
+	}
+
+	catch(e){
+		res.sendStatus(400);
+		return;
+	}
+
+	log(format("Sending blocks to %s.", req.ip));
+	res.contentType("application/json");
+	res.send(await loadFromFile(DB_FILE));
 });
 
 const server = app.listen(HTTP_PORT, HTTP_ADDRESS, () => {
