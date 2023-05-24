@@ -142,9 +142,3 @@
         name: ubuntu
         groups: docker
         append: true
-
-    # Copy the main repository folder.
-    - name: "Copying the repository directory"
-      ansible.posix.synchronize:
-        src: "../../../CloudProject-Cloud"
-        dest: ""

@@ -10,7 +10,7 @@ services:
     tty: true         # docker run -t
 
     ports:
-      - 5080
+      - 5090:5090
 
     volumes:
       - type: bind
