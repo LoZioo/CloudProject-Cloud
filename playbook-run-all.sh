@@ -1,8 +1,12 @@
 #!/bin/bash
 
+set -e
 cd playbooks
-for playbook in $(ls *.yml)
+
+playbooks=("sync" "common" "blockchain" "install-kube" "boot-master" "boot-workers")
+
+for playbook in "${playbooks[@]}"
 do
 	echo "Running $playbook..."
-	ansible-playbook -i hosts.ini $playbook
+	ansible-playbook -i hosts.ini $playbook.yml
 done
