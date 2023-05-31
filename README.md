@@ -29,6 +29,7 @@ Cloud project Cloud section repository.
 - [playbooks](playbooks): Ansible provision playbooks.
 - [services](services): Docker images and the corresponding source code.
 - [data](data): here you will find application specific runtime files (ex.: the `hash.db.json` file from the blockchain application).
+- [setup_kube](setup_kube): Kubernetes installer.
 - [add-scripts-to-path.sh](add-scripts-to-path.sh): add every script under [scripts](scripts) to `$PATH`.
 - [config.sh](config.sh): configure it to match your infrastructure.
 - [compile-ansible-hosts.sh](compile-ansible-hosts.sh): generate the `hosts.ini` file.
