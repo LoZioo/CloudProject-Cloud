@@ -1,0 +1,11 @@
+---
+- name: "Kubernetes master provisioning"
+  hosts: master
+  become: true
+
+  tasks:
+    - name: "Booting Kubernetes master"
+      changed_when: false
+      ansible.builtin.command:
+        chdir: "/home/{{ ansible_user }}/CloudProject-Cloud/setup_kube"
+        cmd: "./boot_master.sh"

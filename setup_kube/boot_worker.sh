@@ -22,7 +22,7 @@ echo -e "$RED[Worker] Get newest joincluster.sh script from other nodes$NC"
 
 for srv in $KHOSTIPS ; do
 if [[ $srv != $THISIP ]]; then
-su - $KUSER -c "rsync -Ptu --ignore-missing-args -e 'ssh -i ~/setup_kube/$KEYFILE -o StrictHostKeyChecking=no' $KUSER@$srv:/tmp/joincluster.sh /tmp/joincluster.sh"
+su - $KUSER -c "rsync -Ptu --ignore-missing-args -e 'ssh -i $(pwd)/$KEYFILE -o StrictHostKeyChecking=no' $KUSER@$srv:/tmp/joincluster.sh /tmp/joincluster.sh"
 fi
 done
 cp -puf /tmp/joincluster.sh /joincluster.sh

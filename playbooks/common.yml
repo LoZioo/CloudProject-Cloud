@@ -137,8 +137,8 @@
         state: started
         enabled: true
 
-    - name: "Adding ubuntu user to docker group"
+    - name: "Adding user to docker group"
       ansible.builtin.user:
-        name: ubuntu
+        name: "{{ ansible_user }}"
         groups: docker
         append: true
