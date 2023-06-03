@@ -26,6 +26,11 @@
         name: "git"
         state: present
 
+    - name: "Ensure jq is installed"
+      ansible.builtin.apt:
+        name: "jq"
+        state: present
+
     # System docker uninstaller.
     - name: "Ensure default docker is not installed"
       ansible.builtin.apt:
