@@ -18,7 +18,7 @@ source ../config.sh
 # $KUSER di ciascun host abbia accesso ssh con chiave agli altri host e
 # che dal cliente, rsync permetta di inviare file agli host (v. upload_scripts.sh)
 
-KEYFILE="ssh_insecure_key.pem"
+KEYFILE="kube_key.pem"
 #KEYFILE=~/.ssh/id_rsa
 # to create a keyfile (in this dir) without passphrase and with comment "k8s":
 # ssh-keygen -P "" -C "k8s"" -f $KEYFILE
