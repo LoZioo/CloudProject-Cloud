@@ -11,3 +11,4 @@
       ansible.posix.synchronize:
         src: "../../../CloudProject-Cloud"
         dest: ""
+        delete: true
