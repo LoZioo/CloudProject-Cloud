@@ -13,6 +13,10 @@ SERVER_1_REMOTE_ADDRESS="192.168.0.100"
 SERVER_2_LOCAL_ADDRESS="127.0.0.3"
 SERVER_2_REMOTE_ADDRESS="192.168.0.221"
 
+# Docker buildx settings.
+BUILD_PLATFORMS="linux/amd64"
+DOCKERHUB_USER="lozioo"
+
 # Kubernetes (see ./setup_kube/config.sh).
 KHOSTS_NETWORK="192.168.0.0/24"
 
