@@ -22,3 +22,4 @@ echo >> $HOST_INI
 echo "[cluster:vars]" >> $HOST_INI
 echo "ansible_ssh_private_key_file=$SECRET_KEY" >> $HOST_INI
 echo "ansible_user=$USER" >> $HOST_INI
+echo "repo_name=CloudProject-Cloud" >> $HOST_INI
